@@ -1,0 +1,56 @@
+[
+  {
+    "id": 101,
+    "final_status": "resolved",
+    "short_outcome": "Confirmed 0 of 1 requested CC-TEE-WHITE tees (size S) on hand, but a $840 reprint invoice (501) from Bulldog Print Co is already open and unpaid. Customer Service couldn't confirm order/fulfillment status from the context it was given, so Boss flagged the ticket for human review rather than promising a fulfillment date.",
+    "agent_contributions": {
+      "boss": "Delegated to Inventory, Customer Service, and Accounting; synthesized their replies into one final answer and carried the review flag forward.",
+      "inventory": "Confirmed 0 of 1 CC-TEE-WHITE (size S) on hand via get_inventory_level.",
+      "accounting": "Confirmed invoice 501 is a real, open, unpaid $840 vendor invoice via get_invoice_details.",
+      "customer_service": "Could not determine order/fulfillment status from the context provided; recommended the ticket owner verify directly with Tauhid."
+    },
+    "human_approvals": [
+      {
+        "approval_id": 1,
+        "category": "review",
+        "status": "pending",
+        "payment_amount": null,
+        "payment_account": null,
+        "created_at": "2026-10-13T20:25:09.711961+00:00"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "final_status": "resolved",
+    "short_outcome": "Lease 1's $2,400 monthly rent (Chapel Street shop, Elm City Properties) confirmed overdue. Boss delegated to Facilities and Accounting to get a real cash account, flagged a $2,400 payment from checking, and the student approved it live in the dashboard -- checking dropped from $3,400.00 to $1,000.00.",
+    "agent_contributions": {
+      "boss": "Delegated to Facilities; also called get_cash_balance itself as a grounding check before finalizing; synthesized the final payment recommendation.",
+      "facilities": "Confirmed lease 1's $2,400 monthly rent and landlord via get_lease_details; also called Accounting directly for the cash account (a real escalation-rule gap, documented in harness.md).",
+      "accounting": "Confirmed the checking account balance ($3,400) via get_cash_balance and recommended paying the rent from it."
+    },
+    "human_approvals": [
+      {
+        "approval_id": 3,
+        "category": "payment",
+        "status": "approved",
+        "payment_amount": 2400.0,
+        "payment_account": "checking",
+        "decided_by": "rachel.sin@yale.edu",
+        "created_at": "2026-10-13T20:54:35.467476+00:00",
+        "decided_at": "2026-10-14T00:38:46.682690+00:00"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "final_status": "resolved",
+    "short_outcome": "Only 8 of the requested 20 CC-HOOD-NAVY hoodies (size M) are in stock, a shortfall of 12. Accounting priced an illustrative 10% bulk discount ($52.20/unit, $1,044 total) contingent on availability. No payment was executed and no human approval was needed this run.",
+    "agent_contributions": {
+      "boss": "Delegated to Inventory and Accounting; synthesized the shortfall and the pricing recommendation into one answer.",
+      "inventory": "Confirmed 8 of 20 CC-HOOD-NAVY (size M) on hand via get_inventory_level.",
+      "accounting": "Computed a 10% bulk discount off the $58 list price (unit cost $22) via get_pricing."
+    },
+    "human_approvals": []
+  }
+]

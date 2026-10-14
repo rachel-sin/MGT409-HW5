@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Campus Customs — Resolved Board</title>
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #6b7280;
+    --line: #e2e5ea;
+    --bg: #fafbfc;
+    --sage: #16803c;
+    --sage-bg: #eefbf2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  h1 { font-size: 1.3rem; margin: 0 0 0.35rem 0; }
+  .subtitle { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .tabs {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    border-bottom: none;
+    background: #fff;
+    color: var(--muted);
+    padding: 0.55rem 1rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+  .tab-btn.active { color: var(--ink); font-weight: 600; border-bottom: 1px solid #fff; background: #fff; }
+  .panel { display: none; max-width: 920px; }
+  .panel.active { display: block; }
+
+  .outcome {
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--sage);
+    background: var(--sage-bg);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.92rem;
+  }
+  .outcome b { color: var(--sage); }
+
+  .shots { display: flex; flex-direction: column; gap: 1rem; }
+  .shots img {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+</style>
+</head>
+<body>
+
+<h1>Campus Customs — Resolved Board</h1>
+<div class="subtitle">Real screenshots of the live React dashboard for each resolved ticket (Problem 9, Part 2). Double-click to open.</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="t101">Ticket 101</button>
+  <button class="tab-btn" data-tab="t102">Ticket 102</button>
+  <button class="tab-btn" data-tab="t103">Ticket 103</button>
+</div>
+
+<!-- Ticket 101 -->
+<div class="panel active" id="t101">
+  <div class="outcome">
+    <b>Resolved.</b> Confirmed 0 of 1 requested CC-TEE-WHITE tees (size S) on hand, but a $840 reprint invoice (501) from Bulldog Print Co is already open and unpaid. Customer Service couldn't confirm order/fulfillment status from the context it was given, so Boss flagged the ticket for human review (no cash involved) rather than promising a fulfillment date.
+  </div>
+  <div class="shots">
+    <img src="screenshots/ticket_101_a.png" alt="Ticket 101 — question and answer">
+    <img src="screenshots/ticket_101_b.png" alt="Ticket 101 — full agent guestbook feed">
+  </div>
+</div>
+
+<!-- Ticket 102 -->
+<div class="panel" id="t102">
+  <div class="outcome">
+    <b>Resolved, $2,400.00 paid.</b> Lease 1's rent (Chapel Street shop, Elm City Properties) was confirmed overdue, but Accounting couldn't confirm whether this cycle had already been paid (no payment-history tool exists) — so instead of withholding the recommendation, it flagged <code>category: "payment_pending_confirmation"</code> with the real amount and account ready, and asked a human to confirm payment status first. The student answered "No, pay it" live in the dashboard; checking dropped from $3,400.00 to $1,000.00.
+  </div>
+  <div class="shots">
+    <img src="screenshots/ticket_102_a.png" alt="Ticket 102 — question and answer">
+    <img src="screenshots/ticket_102_b.png" alt="Ticket 102 — agent guestbook feed, part 1">
+    <img src="screenshots/ticket_102_c.png" alt="Ticket 102 — agent guestbook feed, part 2, and the approved confirmation">
+  </div>
+</div>
+
+<!-- Ticket 103 -->
+<div class="panel" id="t103">
+  <div class="outcome">
+    <b>Resolved, no cash impact.</b> Only 8 of the requested 20 CC-HOOD-NAVY hoodies (size M) are in stock, a shortfall of 12. Accounting priced an illustrative 10% bulk discount ($52.20/unit, $1,044 total) contingent on availability — an unapproved recommendation only, nothing charged.
+  </div>
+  <div class="shots">
+    <img src="screenshots/ticket_103_a.png" alt="Ticket 103 — question and answer">
+    <img src="screenshots/ticket_103_b.png" alt="Ticket 103 — full agent guestbook feed">
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>

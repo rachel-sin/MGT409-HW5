@@ -1,0 +1,47 @@
+[
+  {
+    "ticket": 101,
+    "prompt": "tell me what white t shirts are available in size S",
+    "tool": "get_inventory_level",
+    "tool_input": { "sku": "CC-TEE-WHITE", "size": "S" },
+    "tool_output": {
+      "found": true,
+      "sku": "CC-TEE-WHITE",
+      "name": "Classic Bulldog Tee",
+      "size": "S",
+      "qty": 0,
+      "location": "Aisle B"
+    }
+  },
+  {
+    "ticket": 102,
+    "prompt": "tell me what the rent sitch is and when is it due? hwo much is oustanding?",
+    "tool": "get_lease_details",
+    "tool_input": { "lease_id": 1 },
+    "tool_output": {
+      "found": true,
+      "id": 1,
+      "space_name": "Chapel Street shop",
+      "landlord": "Elm City Properties",
+      "monthly_rent": 2400,
+      "next_due": "2026-09-02",
+      "notes": null
+    },
+    "note": "The 'how much is outstanding' part of the prompt can't be answered by this tool -- get_lease_details only returns the lease's terms (rent amount + next due date), not payment or outstanding-balance status. Answering that honestly would need a payments/cash-balance tool, which Problem 3 didn't build."
+  },
+  {
+    "ticket": 103,
+    "prompt": "tell me what other hoodies in size M are available?",
+    "tool": "get_inventory_level",
+    "tool_input": { "sku": "CC-HOOD-NAVY", "size": "M" },
+    "tool_output": {
+      "found": true,
+      "sku": "CC-HOOD-NAVY",
+      "name": "Basic Hoodie Big Yale",
+      "size": "M",
+      "qty": 8,
+      "location": "Aisle A"
+    },
+    "note": "get_inventory_level only looks up one exact SKU at a time -- it can't browse or search by category, so it can't itself answer 'what other hoodies exist.' Confirmed directly against the inventory table in Problem 2: CC-HOOD-NAVY is the only hoodie SKU in the entire table, so there genuinely are no other hoodies to report -- this is the real state of the data, not a gap in the tool's answer."
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "ticket_id": 101,
+    "message": "Ticket #101: We cannot fulfill Tauhid Zaman\u2019s request for one CC-TEE-WHITE tee in size S from current stock; Inventory reports 0 on hand (short by 1). The related Invoice 501 is an open $840 vendor invoice for the rush reprint, due 2026-08-28. That invoice does not establish that the customer order is unpaid or confirm when stock will be available, so fulfillment timing remains unknown. Recommended next step: inquire about restock availability/timing and then offer the requester a restock option or an alternative.",
+    "recommended_action": "Human follow-up needed to obtain restock availability/timing or decide on an alternative for the requester.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:19:06.496728+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 2,
+    "ticket_id": 103,
+    "message": "Ticket #103 concerns a price override, so Accounting reviewed the hoodie pricing. The recorded unit cost is $22 and list price is $58; for 20 units, that is $1,160 at list price against $440 in product cost. The pricing data provides no discount policy or required margin threshold, so a specific bulk discount cannot be confirmed as authorized. Recommend no discount until a human approves a defined override. Inventory availability was not assessed.",
+    "recommended_action": "Human review and approval are required before applying any discount; specify the approved unit price or discount amount.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:19:23.347295+00:00",
+    "decided_at": null,
+    "decided_by": null
+  }
+]

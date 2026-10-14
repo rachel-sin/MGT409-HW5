@@ -1,0 +1,223 @@
+:root {
+  --yale: #00356b;
+  --yale-light: #1d5da3;
+  --gold: #ffd60a;
+  --gold-dark: #c9a400;
+  --cream: #fffdf2;
+  --ink: #111;
+  --hot: #ff2fa0;
+
+  --amber-bg: #fff3b0;
+  --amber: #a06800;
+  --sage-bg: #c9f7cf;
+  --sage: #116b2a;
+  --dusty-red-bg: #ffd3e6;
+  --dusty-red: #b3005c;
+
+  font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", cursive;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--yale);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: inherit;
+  margin: 0;
+  color: var(--ink);
+}
+
+button {
+  font-family: inherit;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border: 2px dashed currentColor;
+}
+
+.badge-open {
+  background: var(--amber-bg);
+  color: var(--amber);
+  animation: blink 1.1s step-start infinite;
+}
+
+.badge-resolved {
+  background: var(--sage-bg);
+  color: var(--sage);
+}
+
+.badge-pending {
+  background: var(--dusty-red-bg);
+  color: var(--dusty-red);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    color: #ff3b3b;
+  }
+  16% {
+    color: #ff9d2f;
+  }
+  33% {
+    color: var(--gold);
+  }
+  50% {
+    color: #38d45a;
+  }
+  66% {
+    color: #2fb8ff;
+  }
+  83% {
+    color: #9b5bff;
+  }
+  100% {
+    color: #ff3b3b;
+  }
+}
+
+.rainbow-text {
+  animation: rainbow 3s linear infinite;
+  font-weight: 700;
+}
+
+.glow-title {
+  color: var(--gold);
+  text-shadow:
+    2px 2px 0 var(--yale),
+    -2px -2px 0 var(--yale),
+    2px -2px 0 var(--yale),
+    -2px 2px 0 var(--yale),
+    0 0 14px rgba(255, 214, 10, 0.8);
+  letter-spacing: 0.02em;
+}
+
+.retro-divider {
+  height: 6px;
+  border: none;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff3b3b 0 8%,
+    #ff9d2f 8% 16%,
+    var(--gold) 16% 24%,
+    #38d45a 24% 32%,
+    #2fb8ff 32% 40%,
+    #9b5bff 40% 48%,
+    #ff3b3b 48% 56%
+  );
+  background-size: 200% 100%;
+  animation: slide 3s linear infinite;
+  margin: 1.25rem 0;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 16px;
+  color: var(--gold);
+  text-shadow: 0 0 4px #fff;
+  z-index: 9999;
+  animation: sparkle-fade 700ms ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.6);
+  }
+}
+
+.retro-panel {
+  background: var(--cream);
+  border: 4px dashed var(--yale);
+  border-radius: 4px;
+  box-shadow: 7px 7px 0 var(--yale);
+}
+
+.retro-btn {
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 100%);
+  border: 3px dashed var(--yale);
+  color: var(--yale);
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.retro-btn:hover {
+  filter: brightness(1.08);
+}
+
+.retro-btn:active {
+  transform: translate(1px, 1px);
+}
+
+a.fauxlink {
+  color: var(--hot);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+marquee {
+  background: var(--yale);
+  color: var(--gold);
+  font-weight: 700;
+  padding: 0.3rem 0;
+  border-bottom: 3px dashed var(--gold);
+  border-top: 3px dashed var(--gold);
+}

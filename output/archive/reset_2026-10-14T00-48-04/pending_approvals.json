@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "ticket_id": 101,
+    "message": "Ticket #101 has a shortfall: inventory confirmed 0 CC-TEE-WHITE tees in size S on hand, versus 1 requested. Accounting confirmed invoice 501 is an open, unpaid $840 invoice due 2026-08-28, described as \u201cRush reprint CC-TEE-WHITE S.\u201d The invoice record does not establish that the reprint is complete or that the tee is available. Customer Service could not determine order handling or give a fulfillment timeline and recommends the ticket owner review options with Tauhid after verifying order status and fulfillment options. Human review is needed before promising fulfillment or responding with an outcome.",
+    "recommended_action": "Have the ticket owner verify the order/reprint status and available fulfillment options, then follow up with Tauhid; do not promise availability or a restock date based on current information.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T20:25:09.711961+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 2,
+    "ticket_id": 102,
+    "message": "Ticket #102 needs human review. Facilities reports Lease 1 lists rent of $2,400 with a due date of 2026-09-02, which is past as of 2026-10-13; this conflicts with the email note that rent is due in two days. Accounting could not confirm whether the rent has already been paid because no rent invoice ID was provided. The checking balance reported was $3,400 as of 2026-08-31, but it is stale and does not establish current available funds. Do not arrange or recommend payment until the due date and payment status are reconciled and a current cash balance is confirmed.",
+    "recommended_action": "Human review: reconcile the due-date discrepancy, verify whether the rent was paid, and confirm the current checking balance before deciding whether to pay $2,400.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T20:26:01.992242+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 3,
+    "ticket_id": 102,
+    "message": "Ticket #102: Lease 1 is listed with Elm City Properties as landlord; rent of $2,400 is due on 2026-09-02, consistent with the email stating it is due in two days. The checking account balance is $3,400 as of 2026-08-31. Payment has not been initiated or confirmed. Please obtain human approval to pay $2,400 from checking.",
+    "recommended_action": "Obtain approval to pay $2,400 from checking for lease 1; do not treat payment as completed.",
+    "category": "payment",
+    "payment_amount": 2400.0,
+    "payment_account": "checking",
+    "status": "approved",
+    "created_at": "2026-10-13T20:54:35.467476+00:00",
+    "decided_at": "2026-10-14T00:38:46.682690+00:00",
+    "decided_by": "rachel.sin@yale.edu"
+  }
+]

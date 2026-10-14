@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "ticket_id": 101,
+    "message": "Ticket #101: We cannot fulfill Tauhid Zaman\u2019s request for one CC-TEE-WHITE tee in size S from current stock; Inventory reports 0 on hand (short by 1). The related Invoice 501 is an open $840 vendor invoice for the rush reprint, due 2026-08-28. That invoice does not establish that the customer order is unpaid or confirm when stock will be available, so fulfillment timing remains unknown. Recommended next step: inquire about restock availability/timing and then offer the requester a restock option or an alternative.",
+    "recommended_action": "Human follow-up needed to obtain restock availability/timing or decide on an alternative for the requester.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:04:42.799494+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 2,
+    "ticket_id": 101,
+    "message": "Ticket #101 is not supported by current inventory: CC-TEE-WHITE size S has 0 on hand against the request for 1, so fulfillment cannot be confirmed. Accounting found invoice 501 is an open, overdue $840 rush-reprint invoice due 2026-08-28. The checking balance lookup still reports $3,400 as of 2026-08-31; it does not provide a current balance. The ticket\u2019s resolved status does not establish that the item was received or the customer order fulfilled. Keep the ticket under review: confirm with a human whether the reprint was received and the order fulfilled, and obtain a current cash balance before considering payment of the vendor invoice. No payment is recommended based on the available information. Human review is needed because inventory shortfall and invoice/reprint fulfillment remain unresolved.",
+    "recommended_action": "Verify reprint receipt and customer fulfillment; obtain a current cash balance, then reassess the overdue invoice.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:14:29.963445+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 3,
+    "ticket_id": 101,
+    "message": "Ticket #101 is not supported by current inventory: CC-TEE-WHITE size S has 0 on hand against the request for 1, so fulfillment cannot be confirmed. Accounting found invoice 501 is an open, overdue $840 rush-reprint invoice due 2026-08-28. The checking balance lookup still reports $3,400 as of 2026-08-31; it does not provide a current balance. The ticket\u2019s resolved status does not establish that the item was received or the customer order fulfilled. Keep the ticket under review: confirm with a human whether the reprint was received and the order fulfilled, and obtain a current cash balance before considering payment of the vendor invoice. No payment is recommended based on the available information. Human review is needed because inventory shortfall and invoice/reprint fulfillment remain unresolved.",
+    "recommended_action": "Verify reprint receipt and customer fulfillment; obtain a current cash balance, then reassess the overdue invoice.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:15:01.049302+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 4,
+    "ticket_id": 101,
+    "message": "Ticket #101 is not supported by current inventory: CC-TEE-WHITE size S has 0 on hand against the request for 1, so fulfillment cannot be confirmed. Accounting found invoice 501 is an open, overdue $840 rush-reprint invoice due 2026-08-28. The checking balance lookup still reports $3,400 as of 2026-08-31; it does not provide a current balance. The ticket\u2019s resolved status does not establish that the item was received or the customer order fulfilled. Keep the ticket under review: confirm with a human whether the reprint was received and the order fulfilled, and obtain a current cash balance before considering payment of the vendor invoice. No payment is recommended based on the available information. Human review is needed because inventory shortfall and invoice/reprint fulfillment remain unresolved.",
+    "recommended_action": "Verify reprint receipt and customer fulfillment; obtain a current cash balance, then reassess the overdue invoice.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:16:16.249508+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 5,
+    "ticket_id": 103,
+    "message": "Ticket #103 concerns a price override, so Accounting reviewed the hoodie pricing. The recorded unit cost is $22 and list price is $58; for 20 units, that is $1,160 at list price against $440 in product cost. The pricing data provides no discount policy or required margin threshold, so a specific bulk discount cannot be confirmed as authorized. Recommend no discount until a human approves a defined override. Inventory availability was not assessed.",
+    "recommended_action": "Human review and approval are required before applying any discount; specify the approved unit price or discount amount.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:16:19.708513+00:00",
+    "decided_at": null,
+    "decided_by": null
+  }
+]

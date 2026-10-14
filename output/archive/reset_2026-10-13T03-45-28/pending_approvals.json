@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "ticket_id": 101,
+    "message": "Boss did not resolve ticket #101 within its step limit (8 steps) -- this needs direct human review.",
+    "recommended_action": "Have a human review this ticket directly; the agent team could not resolve it efficiently.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T03:20:53.676115+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 2,
+    "ticket_id": 101,
+    "message": "Boss did not resolve ticket #101 within its step limit (8 steps) -- this needs direct human review.",
+    "recommended_action": "Have a human review this ticket directly; the agent team could not resolve it efficiently.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T03:43:09.081026+00:00",
+    "decided_at": null,
+    "decided_by": null
+  }
+]

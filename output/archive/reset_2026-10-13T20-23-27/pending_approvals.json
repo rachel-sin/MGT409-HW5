@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "ticket_id": 102,
+    "message": "Ticket #102: Lease 1 records monthly rent of $2,400 payable to Elm City Properties, with a due date of September 2, 2026. The recorded due date is already past as of October 13, 2026, so the rent appears overdue under the lease record. Facilities cannot verify whether it has been paid. Confirm payment status and the correct cash account with Accounting; if still unpaid, arrange payment. Human approval is required before payment, and no payment account has been identified.",
+    "recommended_action": "Confirm payment status and the appropriate cash account with Accounting; if still unpaid, arrange the $2,400 rent payment after human approval.",
+    "category": "payment",
+    "payment_amount": 2400.0,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:28:12.848459+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 2,
+    "ticket_id": 103,
+    "message": "Ticket #103: Current stock is 8 of 20 requested CC-HOOD-NAVY hoodies, size M, leaving a shortfall of 12. Accounting found list price $58 and unit cost $22; its illustrative 10% bulk discount would be $52.20 each ($1,044 total), leaving $30.20 per unit above cost. Because no authorized discount policy or minimum margin was available, this is not an approved quote and requires human approval before committing. The shop also cannot supply all 20 from current stock; a restock timeline was not established.",
+    "recommended_action": "Human review: decide whether to approve the proposed 10% discount and whether to pursue restocking 12 units before confirming the order. No restock timeline is available from the information gathered.",
+    "category": "review",
+    "payment_amount": null,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:29:01.077395+00:00",
+    "decided_at": null,
+    "decided_by": null
+  },
+  {
+    "id": 3,
+    "ticket_id": 102,
+    "message": "Ticket #102: Lease 1 records monthly rent of $2,400 payable to Elm City Properties, with a due date of September 2, 2026. The recorded due date is already past as of October 13, 2026, so the rent appears overdue under the lease record. Facilities cannot verify whether it has been paid. Confirm payment status and the correct cash account with Accounting; if still unpaid, arrange payment. Human approval is required before payment, and no payment account has been identified.",
+    "recommended_action": "Confirm payment status and the appropriate cash account with Accounting; if still unpaid, arrange the $2,400 rent payment after human approval.",
+    "category": "payment",
+    "payment_amount": 2400.0,
+    "payment_account": null,
+    "status": "pending",
+    "created_at": "2026-10-13T04:30:07.199918+00:00",
+    "decided_at": null,
+    "decided_by": null
+  }
+]

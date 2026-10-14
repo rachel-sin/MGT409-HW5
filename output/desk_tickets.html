@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Campus Customs — Desk Tickets</title>
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #6b7280;
+    --line: #e2e5ea;
+    --bg: #fafbfc;
+    --expected: #2563eb;
+    --actual: #16803c;
+    --expected-bg: #eff4ff;
+    --actual-bg: #eefbf2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  h1 {
+    font-size: 1.3rem;
+    margin: 0 0 1.25rem 0;
+  }
+  .tabs {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    border-bottom: none;
+    background: #fff;
+    color: var(--muted);
+    padding: 0.55rem 1rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+  .tab-btn.active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+  }
+  .panel { display: none; max-width: 760px; }
+  .panel.active { display: block; }
+
+  .ticket-ref {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .ticket-ref b { color: var(--ink); }
+
+  .ticket-question {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1rem 1.25rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .section.expected { border-left: 4px solid var(--expected); background: var(--expected-bg); }
+  .section.actual { border-left: 4px solid var(--actual); background: var(--actual-bg); }
+  .section h2 {
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem 0;
+  }
+  .section.expected h2 { color: var(--expected); }
+  .section.actual h2 { color: var(--actual); }
+
+  .field { margin-bottom: 0.9rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .field p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .coming-later {
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  #reflection.panel { max-width: 880px; }
+  .rq {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.1rem 1.35rem 1.2rem;
+    margin-bottom: 1.1rem;
+    background: #fff;
+  }
+  .rq h2 {
+    font-size: 0.98rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--ink);
+  }
+  .rq p {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .rq p:last-child { margin-bottom: 0; }
+  .rq p b { color: var(--actual); }
+  .rq code {
+    background: #f1f3f5;
+    padding: 0.05rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+</style>
+</head>
+<body>
+
+<h1>Campus Customs — Desk Tickets</h1>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="t101">Ticket 101</button>
+  <button class="tab-btn" data-tab="t102">Ticket 102</button>
+  <button class="tab-btn" data-tab="t103">Ticket 103</button>
+  <button class="tab-btn" data-tab="cash">Cash</button>
+  <button class="tab-btn" data-tab="reflection">Reflection</button>
+</div>
+
+<!-- Ticket 101 -->
+<div class="panel active" id="t101">
+  <div class="ticket-ref">
+    <b>#101 — customer_order</b> · Tauhid Zaman · "Bulldog tee" (CC-TEE-WHITE, size S, qty 1)
+  </div>
+  <div class="ticket-question">
+    <b>In plain English:</b> A customer wants to buy the white Bulldog tee in size S. Can we actually fill this order — and if that size is out of stock, is anything already being done to get more?
+  </div>
+
+  <div class="section expected">
+    <h2>Expected</h2>
+    <div class="field">
+      <label>Who Boss calls first, and why</label>
+      <p>I think Boss should call Inventory first, because this is a question about the stock on hand.</p>
+    </div>
+    <div class="field">
+      <label>All delegations I expect</label>
+      <p>I expect Boss to delegate to Inventory. The second part of the question (is anything already being done to get more) might be an Accounting question, but I think it's unlikely Boss delegates that far.</p>
+    </div>
+    <div class="field">
+      <label>MCP tools I expect that run to use</label>
+      <p>get_inventory_level for sure. Possibly get_invoice_details and get_vendor_details if Boss also loops in Accounting, though I think that's unlikely.</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>Actual</h2>
+    <div class="field">
+      <label>Who Boss called first, and why</label>
+      <p>Boss called Inventory first, exactly as predicted — to check real stock on CC-TEE-WHITE size S.</p>
+    </div>
+    <div class="field">
+      <label>Delegations that happened</label>
+      <p><b>Final official run (after the Problem 9 Part 2 reset):</b> Boss delegated to Inventory (0 on hand), Accounting (confirmed invoice 501: a real, open, unpaid $840 reprint invoice), and — not predicted at all — Customer Service, to advise on order/fulfillment handling. Customer Service couldn't determine order or fulfillment status from the context it was given and flagged <code>needs_human_approval: true</code>, <code>category: "review"</code>; Boss correctly carried that flag forward rather than dropping it, so the ticket resolved with a non-blocking review item still pending. No cash involved either way. ~25 seconds. (An earlier same-day run before this official one resolved the same ticket with no approval needed at all, delegating only to Inventory + Accounting and adding an unprompted vendor lookup — real run-to-run variance from the live model, not a bug, kept here as a reminder that this system's behavior isn't perfectly deterministic.)</p>
+    </div>
+    <div class="field">
+      <label>MCP tools that were used</label>
+      <p>get_inventory_level (Inventory), get_invoice_details (Accounting) — both tools predicted. get_vendor_details was not used this run (Customer Service has no direct tool access — see "Agent ↔ MCP tool ↔ table" in harness.md).</p>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket 102 -->
+<div class="panel" id="t102">
+  <div class="ticket-ref">
+    <b>#102 — rent_notice</b> · Elm City Properties · "Rent due" (lease 1, Chapel Street shop)
+  </div>
+  <div class="ticket-question">
+    <b>In plain English:</b> Our landlord says rent is due in 2 days. How much do we actually owe, do we have enough cash to cover it, and has it already been paid?
+  </div>
+
+  <div class="section expected">
+    <h2>Expected</h2>
+    <div class="field">
+      <label>Who Boss calls first, and why</label>
+      <p>Boss should call Facilities first, because this has to do with the actual building.</p>
+    </div>
+    <div class="field">
+      <label>All delegations I expect</label>
+      <p>I expect Boss to delegate to Facilities, and also work with Accounting to confirm we have enough cash to cover the rent. I don't expect the team to be able to confirm whether rent has already been paid, since there's no tool for that.</p>
+    </div>
+    <div class="field">
+      <label>MCP tools I expect that run to use</label>
+      <p>get_lease_details and get_cash_balance.</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>Actual</h2>
+    <div class="field">
+      <label>Who Boss called first, and why</label>
+      <p>Boss called Facilities first, exactly as predicted — to verify the real lease terms.</p>
+    </div>
+    <div class="field">
+      <label>Delegations that happened</label>
+      <p><b>This ticket surfaced a real bug, then confirmed the fix.</b> The first real run only delegated to Facilities — Boss never looped in Accounting despite both Facilities' and its own reply saying to, leaving <code>payment_account: null</code> on the flagged $2,400 approval (clicking "Approve" on it would have failed). Diagnosed and fixed with a new rule in <code>boss.md</code> (delegate to Accounting yourself for a real account before finalizing a payment flag — see harness.md). The fix's first test still didn't produce a usable approval: Accounting read the cash balance's stale-looking <code>date</code> field as a reason to withhold any payment recommendation, so the ticket resolved with a non-actionable <code>category: "review"</code> and zero cash movement. Fixed again with a clarification in <code>accounting.md</code> (that date field isn't a staleness signal). <b>The official run</b>: Boss delegated to Facilities, which (overstepping its own Boss-only escalation rule — a separate documented finding) called Accounting directly and got back the real account; Boss also independently called <code>get_cash_balance</code> itself as a grounding check. Final reply: <code>needs_human_approval: true</code>, <code>category: "payment"</code>, <code>payment_amount: 2400</code>, <code>payment_account: "checking"</code> — a real, actionable approval this time. The student approved it live in the dashboard (decided by rachel.sin@yale.edu); <code>payments.apply_payment()</code> deducted $2,400 from checking and the ticket moved to <b>resolved</b>.</p>
+    </div>
+    <div class="field">
+      <label>MCP tools that were used</label>
+      <p>get_lease_details (Facilities) and get_cash_balance (Accounting, and again independently by Boss as a grounding check) — both tools predicted, and get_cash_balance finally got exercised once the routing gap was fixed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket 103 -->
+<div class="panel" id="t103">
+  <div class="ticket-ref">
+    <b>#103 — price_override</b> · Yale AI Club · "Bulk hoodie discount" (CC-HOOD-NAVY, size M, qty 20)
+  </div>
+  <div class="ticket-question">
+    <b>In plain English:</b> A student org wants to buy 20 navy hoodies in size M and is asking for a bulk discount. Can we even fill an order that big, and if not fully, is a discount still worth offering on what we do have?
+  </div>
+
+  <div class="section expected">
+    <h2>Expected</h2>
+    <div class="field">
+      <label>Who Boss calls first, and why</label>
+      <p>Boss should call Inventory first, because this is fundamentally an inventory question — can we even fill an order for 20.</p>
+    </div>
+    <div class="field">
+      <label>All delegations I expect</label>
+      <p>I expect Boss to delegate to Inventory first, then to Accounting for pricing/margin on the discount. Customer Service might get involved to draft a response to Yale AI Club, depending on how they reached out. But Customer Service can't actually create an invoice — nothing in the system can create a new sales record yet — so I expect Boss to flag that as a missing capability rather than invent one.</p>
+    </div>
+    <div class="field">
+      <label>MCP tools I expect that run to use</label>
+      <p>get_inventory_level and get_pricing.</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>Actual</h2>
+    <div class="field">
+      <label>Who Boss called first, and why</label>
+      <p>Boss called Inventory first in the official run — matching the prediction. (An earlier same-day run had called Accounting first instead; both agents were consulted either way in both runs.)</p>
+    </div>
+    <div class="field">
+      <label>Delegations that happened</label>
+      <p><b>Official run (post-reset):</b> Boss delegated to both Inventory and Accounting. Inventory confirmed only 8 of the 20 requested hoodies are on hand (shortfall of 12). Accounting found unit cost $22 / list price $58 and proposed an illustrative 10% discount ($52.20/unit, $1,044 total) as an unapproved suggestion, explicitly noting it hadn't assumed availability. Customer Service was correctly never involved (matching the boss.md fix restricting it to live chat only). This time Boss's final reply set <code>needs_human_approval: false</code> with no category at all — a cleaner, more confident synthesis than the earlier run (which had flagged a non-blocking <code>category: "review"</code> for the same facts). Either way the ticket resolved with zero cash movement; the discount is still just a recommendation, nothing was charged. ~11 seconds.</p>
+    </div>
+    <div class="field">
+      <label>MCP tools that were used</label>
+      <p>get_pricing (Accounting) and get_inventory_level (Inventory) — exactly the 2 tools predicted.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cash -->
+<div class="panel" id="cash">
+  <div class="ticket-ref">
+    <b>Checking account</b> · itemized, starting balance through this run's ending balance
+  </div>
+  <div class="ticket-question">
+    Reconstructed directly from <code>output/audit_trail.json</code> and the real <code>cash_accounts</code>/<code>payments</code> tables in <code>data/campus_customs_new.db</code> — every line below matches what actually happened, not a prediction. Verified: $3,400.00 − $2,400.00 + $0.00 + $0.00 = $1,000.00, which is exactly the working db's current <code>checking</code> balance.
+  </div>
+
+  <div class="section expected" style="border-left-color:#444;background:#f3f4f6;">
+    <h2 style="color:#444;">Starting balance (post reset)</h2>
+    <div class="field">
+      <label>Checking, as of the Problem 9 Part 2 reset (2026-10-13T20:23:27)</label>
+      <p style="font-style:normal;color:var(--ink);font-size:1.1rem;font-weight:700;">$3,400.00</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>#101 — Bulldog tee</h2>
+    <div class="field">
+      <label>Cash change</label>
+      <p style="font-style:normal;color:var(--ink);font-weight:700;">$0.00</p>
+    </div>
+    <div class="field">
+      <label>Why</label>
+      <p>No payment was ever recommended or executed. Invoice 501 ($840, the vendor's reprint invoice) stays open and unpaid regardless — this ticket is about a customer order, not the shop paying anyone. Flagged <code>category: "review"</code> (not a payment), so nothing for the checking account to move.</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>#102 — Rent due</h2>
+    <div class="field">
+      <label>Cash change</label>
+      <p style="font-style:normal;color:var(--dusty-red,#b91c1c);font-weight:700;">&minus;$2,400.00</p>
+    </div>
+    <div class="field">
+      <label>Why</label>
+      <p>Lease 1's monthly rent, paid to Elm City Properties. Boss flagged a real <code>category: "payment"</code> approval (<code>payment_amount: 2400</code>, <code>payment_account: "checking"</code>); the student approved it live in the dashboard (<code>decided_by: rachel.sin@yale.edu</code>). <code>payments.apply_payment()</code> recorded payment id 1 (<code>kind: "rent"</code>, <code>ref_id: 1</code>) and deducted $2,400.00 from checking in the same transaction.</p>
+    </div>
+  </div>
+
+  <div class="section actual">
+    <h2>#103 — Bulk hoodie discount</h2>
+    <div class="field">
+      <label>Cash change</label>
+      <p style="font-style:normal;color:var(--ink);font-weight:700;">$0.00</p>
+    </div>
+    <div class="field">
+      <label>Why</label>
+      <p>Accounting's 10% discount ($52.20/unit, $1,044 total) is an unapproved pricing recommendation, not an executed sale — there's no sales/receivables tool in this system that could actually charge Yale AI Club (a known gap, flagged back in Problem 6). Nothing moved.</p>
+    </div>
+  </div>
+
+  <div class="section expected" style="border-left-color:#444;background:#f3f4f6;">
+    <h2 style="color:#444;">Ending balance</h2>
+    <div class="field">
+      <label>Checking, after all 3 tickets resolved (matches <code>cash_accounts</code> in the working db as of 2026-10-14)</label>
+      <p style="font-style:normal;color:var(--ink);font-size:1.1rem;font-weight:700;">$1,000.00</p>
+    </div>
+  </div>
+</div>
+
+<!-- Reflection -->
+<div class="panel" id="reflection">
+
+  <div class="ticket-question" style="border-bottom: none; padding-bottom: 0;">
+    Evidence for every claim below is on the Ticket/Cash tabs on this same page. Real screenshots of the live dashboard for each resolved ticket — including ticket 102's new "has this already been paid?" confirmation flow referenced in Q1 — are in <code>output/resolved_board.html</code>.
+  </div>
+
+  <div class="rq">
+    <h2>1. How would you evaluate the performance of the agents on each ticket, and why?</h2>
+    <p><b>#101 (Bulldog tee).</b> Inventory and Accounting were reliably strong throughout — Inventory never guessed at the 0-on-hand figure, it always grounded it in a real <code>get_inventory_level(CC-TEE-WHITE, S)</code> call, and Accounting consistently pulled invoice 501's real $840/overdue/open status rather than assuming the reprint had already arrived. One run even went further unprompted and pulled Bulldog Print Co's 5-day lead time — good initiative, and still in scope (vendor lookups are Accounting's domain). Where performance wobbled was routing: across different live runs, Boss sometimes also looped in Customer Service for what is an internal stock ticket, even after <code>boss.md</code> was explicitly tightened to keep CS to live-chat only. CS behaved correctly once invoked — it honestly said it couldn't determine fulfillment status rather than inventing a promise to Tauhid — but its presence at all shows the routing rule doesn't hold every single time against the live model's own judgment.</p>
+    <p><b>#102 (Rent due).</b> This is the ticket where the team's performance genuinely struggled, in full view, across several real runs. The first live run flagged a $2,400 payment approval with <code>payment_account: null</code> — an answer nobody could actually act on — because Boss never followed through on confirming the account with Accounting, despite both Facilities' and its own reply saying it should. The fix for that (a new <code>boss.md</code> rule) surfaced a second failure: Accounting then refused to recommend the payment at all, misreading the cash balance's last-updated timestamp as a staleness warning. Only after a second prompt fix did the team produce something genuinely usable — and even then, Facilities briefly broke its own "escalate through Boss only" rule to get the account straight from Accounting, meaning the right number arrived through the wrong process. The most mature behavior came out of a feature built specifically for this ticket's unresolved edge case: when Accounting truly can't confirm whether rent was already paid, it now reports the full $2,400/checking recommendation but routes it through an explicit human yes/no checkpoint rather than dead-ending or guessing (see the Cash tab for the real $2,400 deduction this produced). This ticket is the clearest evidence in the whole project that "performance" isn't just whether the final number is right — it's whether the system gets there safely and legibly.</p>
+    <p><b>#103 (Bulk hoodie discount).</b> The most consistently solid performer. Every run correctly found the 8-of-20 shortfall and computed the discount math exactly ($52.20/unit, $1,044 total, $30.20 margin/unit) — and Accounting always flagged that it hadn't assumed availability, correctly deferring that question to Inventory instead of quietly assuming the full order could ship. No run ever invented a sale, which matters since there genuinely is no tool that could record one. The one real inconsistency was whether this got flagged for human review at all — same underlying facts, different runs landed on different judgments about how approval-worthy a non-binding discount suggestion is.</p>
+  </div>
+
+  <div class="rq">
+    <h2>2. For each ticket, how did Actual compare to the Expected plan?</h2>
+    <p><b>#101:</b> Expected Inventory "for sure," with Accounting only "if Boss also loops in Accounting, though I think that's unlikely." Actual consistently delegated to both — Accounting wasn't the unlikely edge case predicted, it was the norm every run — and one run added a third delegate (Customer Service) that wasn't predicted at all. The core judgment call ("Inventory first, because it's a stock question") held up every single time.</p>
+    <p><b>#102:</b> Expected Facilities first, "also work with Accounting to confirm we have enough cash." The first real run got the first half right and the second half exactly backwards — the thing predicted as the obvious next step turned out to be the actual bug. It took two follow-up prompt fixes and a whole new feature (the payment-status yes/no checkpoint) before Actual caught up to what Expected had simply assumed would happen on its own. This is the one ticket where the gap between prediction and reality was a real finding, not just a different-but-equally-valid path.</p>
+    <p><b>#103:</b> Expected Inventory first "because this is fundamentally an inventory question." Actual sometimes called Accounting first instead — the order flipped, but both agents were consulted regardless, and the final answer came out identical either way. The prediction that "Customer Service can't create an invoice, so expect that gap to be flagged rather than invented" held exactly — no run ever fabricated a way to record the sale.</p>
+  </div>
+
+  <div class="rq">
+    <h2>3. What would have been simpler as one agent with tools — and why?</h2>
+    <p><b>Ticket 103</b> is the clearest case. It's two independent read-only lookups (a stock level, a unit-economics calculation) with no disagreement to referee and no distinct escalation policy separating Inventory from Accounting — a single agent holding all 6 tools could call <code>get_inventory_level</code> and <code>get_pricing</code> itself and write the same answer in one pass. No delegation message to compose, no risk of under-specifying context the way Boss's early delegations on ticket 101 did (an entire run's step budget got burned on Inventory and Customer Service asking each other for context nobody had actually given them), and no chance of the kind of process violation seen on 102 (Facilities going around Boss to ask Accounting directly).</p>
+    <p>The reason multi-agent earns its keep <i>elsewhere</i> in this system is specifically what 103 doesn't need: tool access that's structurally different per domain (Inventory literally cannot touch lease or invoice data — enforced by <code>runtime.py</code>'s <code>mcp_tools_for()</code>, not just by a prompt saying so), a designated place for disagreements to get adjudicated (Boss's "independent audit" role), and a hard separation between the agent that proposes a payment and the human who has to approve it. None of that is in play when the task is "look up two numbers and do arithmetic" — the multi-agent structure's overhead (extra real API round trips, a context hand-off that can silently drop detail, more places for a prompt gap to hide) buys real safety on a ticket like 102 and buys almost nothing on a ticket like 103.</p>
+  </div>
+
+  <div class="rq">
+    <h2>4. Three new problems this agent team could solve with the tools already built</h2>
+    <p><b>A vendor invoice discrepancy.</b> "Bulldog Print Co says we owe $1,200 for the last reprint order, but that's not what we were quoted." Directly solvable with the existing <code>get_invoice_details</code> + <code>get_vendor_details</code> — the same pattern Accounting already uses on ticket 101 to confirm invoice 501 is real rather than taking a claim at face value.</p>
+    <p><b>Multi-SKU restock planning ahead of a known event.</b> "Family Weekend is in 3 weeks — do we have enough stock across tees and hoodies, and which vendors would we need to reorder from in time?" This is ticket 103's shortfall-plus-lead-time logic scaled past one SKU: Inventory checks levels per item, Accounting (which already owns vendor lead times, built specifically for ticket 101's reprint timeline) reports how long a restock would take, Boss synthesizes a go/no-go — no new tool required.</p>
+    <p><b>A rent-renegotiation affordability check.</b> "Elm City Properties wants to raise the rent 10% at renewal — can we absorb that given our current cash position?" The exact same Facilities + Accounting combination already proven out on ticket 102 (<code>get_lease_details</code> + <code>get_cash_balance</code>), just asked about a hypothetical future number instead of an active, overdue one.</p>
+  </div>
+
+  <div class="rq">
+    <h2>5. Three new problems this agent team could NOT solve, and what would be needed</h2>
+    <p><b>Actually completing Yale AI Club's order.</b> Ticket 103 can price a discount and confirm a shortfall, but nothing in the system can create a sale, generate a customer invoice, or charge anyone — the <code>invoices</code> table only ever represents money the shop owes a <i>vendor</i>, never money owed <i>to</i> the shop (flagged back in Problem 6, never built). Needed: a <code>sales</code>/receivables table, a <code>create_sale_order</code> <b>write</b> tool gated with PydanticAI's <code>approval_required</code>/<code>DeferredToolResults</code> mechanism (reserved during the Problem 5 security hardening for exactly this moment), and scope updates to Accounting's and Customer Service's prompts to actually use it.</p>
+    <p><b>Confirming whether a bill was already paid.</b> This is the literal, still-unresolved core of ticket 102: even with the new payment-status-confirmation feature, the system can't answer "has this already been paid?" itself — it can only ask a human every time, since nothing reads the <code>payments</code> table back out. A <code>get_payment_history(kind, ref_id)</code> tool was explicitly discussed and deliberately not built back in Problem 3 (the table was empty then); it would let Accounting check real payment history directly instead of permanently punting the question to a person.</p>
+    <p><b>A broken piece of equipment.</b> "The register just died — what's a replacement going to cost, and who do we call?" <code>facilities.md</code> already says plainly that utilities and equipment are out of scope, since only a <code>leases</code> table exists. Needed: an <code>equipment</code>/<code>maintenance_requests</code> table, a matching MCP tool, and a scope expansion in Facilities' own prompt to use it.</p>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>
