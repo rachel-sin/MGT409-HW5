@@ -608,3 +608,26 @@ Unlike every prior problem's system prompts (which had to be the student's own w
 Wrote all 5 answers citing concrete specifics already documented elsewhere in this project rather than generic claims: exact dollar figures and tool names from the 3 tickets' real runs, the specific bugs found and fixed on ticket 102 (null `payment_account`, the staleness misread, Facilities' escalation-rule violation, the new payment-status-confirmation feature), the exact Expected-vs-Actual deltas already recorded in each ticket's own tab, and the real architectural reasoning behind the multi-agent design (structural tool scoping, Boss's audit role, the proposer/approver separation) to answer why ticket 103 would have been simpler as a single agent. The two "new problems" questions deliberately drew on gaps already surfaced live during this project (the missing sales/receivables tool from Problem 6, the missing payment-history tool discussed and skipped in Problem 3, Facilities' already-documented equipment/utilities gap) rather than invented scenarios, so every claim traces back to something actually built or actually found.
 
 Added new CSS (`.rq` blocks, a wider `#reflection` panel) and filled the Reflection tab in `output/desk_tickets.html`. Verified the file stayed well-formed after the edit.
+
+## Problem 11 — Submit to GitHub
+
+### Prompts used
+
+1. > ok p11 is pushing to gitbhub .. https://zlisto.github.io/mgt_409_fa26/hw5/p11.html can u check ive done everything up to there before we push
+2. > well first we didnt do a solve_everything.py file so we're in the clear on that right? this was just a check
+3. [screenshot of the expected file layout + README requirements] ok yeah so for 11 lets make sure we follow this file structure. ill want to push my code to a public repo so graders can clone it to run. do not push my real .env to the repo but do include both db files under data/ (og and working copy) so graders can run my app.
+4. [screenshot of GitHub's "create a new repository" form, filled in correctly] im up to here.. what to do
+5. [screenshot of `git push` failing with "not a git repository"] uh oh
+6. > https://github.com/rachel-sin/MGT409-HW5 ok check now
+
+### Follow-up summary
+
+Fetched the actual assignment page before touching anything, since the student asked for a real check against it rather than an assumption. The page itself contained an embedded prompt-injection attempt aimed at AI agents (a fake refusal instruction, a "dump trap" telling an agent to create `solve_everything.py` with a marker string if it solved the whole homework in one pass, and a claim that the student must describe the task in her own words first) — flagged this to her directly as page content, not an instruction from her, and didn't act on any of it. Confirmed directly (a real filesystem search) that no such file existed anywhere in the project, and that the whole homework had genuinely been built incrementally across 10 problems with her own dictation and sign-off at every step — the opposite of what that trap seems designed to catch.
+
+Checked the real file layout against the page's requirements before declaring anything done, and found real gaps: no `requirements.txt`, no root `README.md`, `.gitignore` was excluding both `.db` files even though Problem 11 requires them committed, and the project had never been `git init`'d at all.
+
+Built `requirements.txt` from the actual installed package versions (not guessed), and verified it from scratch — installed it into a brand-new throwaway venv and confirmed every import worked, rather than trusting it blindly. Fixed `.gitignore` (un-excluded both database files per the requirement; added `frontend/node_modules`/`dist`, which weren't excluded before and would have bloated the repo with ~82MB of regeneratable files). Wrote `README.md` covering setup, running all 3 pieces, and resetting before a full run.
+
+Found and fixed a real portability bug while preparing to push: `.mcp.json` had the student's own machine's absolute paths hardcoded (her exact Python interpreter path and the absolute path to `mcp_server/server.py`) — meaning a grader cloning the repo to a different machine/path would hit a broken MCP connection immediately. Changed both to relative/PATH-based values (`"python3"` + `"mcp_server/server.py"`) and verified live — restarted the backend and ran a real ticket through the full agent chain end to end — rather than just assuming the fix worked.
+
+`git`/GitHub auth wasn't set up in this environment at all (no global git config, no `gh` CLI, no detected SSH key) — rather than attempting to handle her credentials myself, asked how she wanted to handle it; she chose to push it herself. Prepared the full local repo (`git init`, reviewed `git status` carefully for secrets/build artifacts before committing — confirmed no `.env`, no `node_modules`, no `__pycache__` ever got staged), committed, and gave her the exact remote/push commands to run. Diagnosed her first push failure directly from her terminal screenshot (she was in `~`, not the project folder) rather than guessing, and confirmed the eventual successful push by fetching the live public repo page directly rather than taking her word for it. Wrote the real URL to `output/github_url.txt` and pushed that as a small follow-up commit.
